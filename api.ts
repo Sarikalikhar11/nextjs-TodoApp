@@ -3,7 +3,7 @@ import { ITask } from './models/tasks';
 
 export const getAllTodos = async (): Promise<ITask[]> => {
   const res = await fetch(`${baseUrl}/tasks`, { cache: 'no-store' });
-  const todos = await res.json();
+  const todos: any = await res.json();
   return todos;
 };
 
@@ -15,7 +15,7 @@ export const addTodo = async (todo: ITask): Promise<ITask[]> => {
     },
     body: JSON.stringify(todo),
   });
-  const newTodo = await res.json();
+  const newTodo: any = await res.json();
   return newTodo;
 };
 
@@ -27,7 +27,7 @@ export const editTodo = async (todo: ITask): Promise<ITask[]> => {
     },
     body: JSON.stringify(todo),
   });
-  const updatedTodo = await res.json();
+  const updatedTodo: any = await res.json();
   return updatedTodo;
 };
 
@@ -36,4 +36,3 @@ export const deleteTodo = async (id: string): Promise<void> => {
     method: 'DELETE',
   });
 };
-
